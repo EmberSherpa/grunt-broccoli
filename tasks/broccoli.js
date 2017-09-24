@@ -37,7 +37,8 @@ module.exports = function(grunt) {
       env: ['development', 'production', Joi.object()],
       host: Joi.string().hostname(),
       incrementalOverwrite: Joi.boolean(),
-      port: Joi.number()
+      port: Joi.number(),
+      tmpdir: Joi.string().optional()
     });
 
     Joi.attempt(
@@ -62,6 +63,11 @@ module.exports = function(grunt) {
       });
     }
 
+    if (options.tmpdir) {
+      options.tmpdir = path.resolve(process.cwd(), options.tmpdir);
+      mkdirp.sync(options.tmpdir);
+    }
+
     var originalCwd = process.cwd();
     var dest = path.resolve(process.cwd(), this.data.dest);
     var done = this.async();
@@ -76,7 +82,7 @@ module.exports = function(grunt) {
       outputNode = options.config();
     }
 
-    var builder = new broccoli.Builder(outputNode);
+    var builder = new broccoli.Builder(outputNode, { tmpdir: options.tmpdir });
 
     if (command === 'build') {
       builder

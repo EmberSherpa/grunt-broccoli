@@ -54,7 +54,12 @@ module.exports = function(grunt) {
           // every rebuild
           incrementalOverwrite: true,
           // Which port to use with the 'serve' task
-          port: 4200
+          port: 4200,
+          // This option dictates where temporary files are placed while
+          // Broccoli executes a build. Before Broccoli 1.0.0, they were placed
+          // in a directory called `tmp` next to the Brocfile. After 1.0.0,
+          // they're normally placed in the OS's global tmp directory
+          tmpdir: undefined
         }
       },
       prod: {

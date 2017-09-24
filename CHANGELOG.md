@@ -1,3 +1,7 @@
+## 1.1.0
+
+Added `options.tmpdir`. Primarily useful if you depend on a Broccoli plugin that still assumes temporary build files to be placed in a `tmp` directory next to the Brocfile.
+
 ## 1.0.0
 
 A complete rewrite with inspiration and code from [broccoli](https://www.npmjs.com/package/broccoli)'s own CLI module.
@@ -6,7 +10,7 @@ Broccoli ^1.0.0 is now used, and tests load Grunt ^1.0.0.
 
 #### API changes
 
-Please note that apart from `dest`, all options now live in the `options` object. This is to align more closely with Grunt convention, and enables you to specify global options that can be locally overriden. Just like with any other Grunt plugin!
+Please note that apart from `dest`, all options now live in the `options` object. This is to align more closely with Grunt convention, and enables you to specify global options that can be locally overridden. Just like with any other Grunt plugin!
 
 ```js
 // Old config

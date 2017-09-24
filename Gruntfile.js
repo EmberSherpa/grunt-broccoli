@@ -19,7 +19,8 @@ module.exports = function(grunt) {
       brocfile: {
         dest: 'test/build/brocfile',
         options: {
-          config: './test/fixtures/Brocfile.js'
+          config: './test/fixtures/Brocfile.js',
+          tmpdir: 'tmp'
         }
       },
       function: {
