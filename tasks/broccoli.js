@@ -155,23 +155,23 @@ module.exports = function(grunt) {
         srcItems.forEach(function(item) {
           var destMtime;
 
-          try {
-            var itemDestPath = path.join(dest, item);
-            var destStats = fs.statSync(itemDestPath);
-            destMtime = 1000 * Math.floor(destStats.mtime.getTime() / 1000);
-          } catch (error) {
-            destMtime = Number.NEGATIVE_INFINITY;
-          }
-
           var itemSrcPath = path.join(builder.outputPath, item);
           var srcStats = fs.statSync(itemSrcPath);
           var srcMtime = 1000 * Math.floor(srcStats.mtime.getTime() / 1000);
 
-          // The mtime of a directory is updated when the mtime of one of its
-          // contained items are updated. By not copying whole directories, we
-          // avoid overwriting other contained items that haven't changed
-          if (srcStats.isDirectory() && destStats.isDirectory()) {
-            return;
+          try {
+            var itemDestPath = path.join(dest, item);
+            var destStats = fs.statSync(itemDestPath);
+            destMtime = 1000 * Math.floor(destStats.mtime.getTime() / 1000);
+
+            // The mtime of a directory is updated when the mtime of one of its
+            // contained items are updated. By not copying whole directories, we
+            // avoid overwriting other contained items that haven't changed
+            if (srcStats.isDirectory() && destStats.isDirectory()) {
+              return;
+            }
+          } catch (error) {
+            destMtime = Number.NEGATIVE_INFINITY;
           }
 
           if (srcMtime > destMtime) {
@@ -180,22 +180,22 @@ module.exports = function(grunt) {
             mkdirp.sync(path.dirname(itemDestPath));
 
             copyDereferenceSync(itemSrcPath, itemDestPath);
-
-            var changedItemsLog =
-              changedItems.length +
-              (changedItems.length === 1 ? ' item' : ' items') +
-              ' changed';
-
-            grunt.log.ok(
-              'Built (' +
-                changedItemsLog +
-                ') - ' +
-                buildTime +
-                ' ms @ ' +
-                new Date().toString()
-            );
           }
         });
+
+        var changedItemsLog =
+          changedItems.length +
+          (changedItems.length === 1 ? ' item' : ' items') +
+          ' changed';
+
+        grunt.log.ok(
+          'Built (' +
+            changedItemsLog +
+            ') - ' +
+            buildTime +
+            ' ms @ ' +
+            new Date().toString()
+        );
       } else {
         rimraf.sync(dest);
         mkdirp.sync(dest);

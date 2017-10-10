@@ -1,3 +1,8 @@
+## Unreleased
+
+- Fixed a bug in `options.incrementalOverwrite` that would prevent items that previously hadn't been included in the build tree from being written.
+- Fixed a bug where a single rebuild would be logged multiple times when `options.incrementalOverwrite` was enabled
+
 ## 1.1.0
 
 Added `options.tmpdir`. Primarily useful if you depend on a Broccoli plugin that still assumes temporary build files to be placed in a `tmp` directory next to the Brocfile.
