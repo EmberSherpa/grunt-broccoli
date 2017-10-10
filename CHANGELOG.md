@@ -1,4 +1,4 @@
-## Unreleased
+## 1.1.1
 
 - Fixed a bug in `options.incrementalOverwrite` that would prevent items that previously hadn't been included in the build tree from being written.
 - Fixed a bug where a single rebuild would be logged multiple times when `options.incrementalOverwrite` was enabled
