@@ -1,3 +1,6 @@
+## 1.1.2
+- Updated findup-sync dependency to ^2.0.0
+
 ## 1.1.1
 
 - Fixed a bug in `options.incrementalOverwrite` that would prevent items that previously hadn't been included in the build tree from being written.
