@@ -140,6 +140,8 @@ module.exports = function(grunt) {
       );
 
       if (options.incrementalOverwrite) {
+        mkdirp.sync(dest);
+
         var srcItems = walkSync(builder.outputPath);
         var destItems = walkSync(dest);
 

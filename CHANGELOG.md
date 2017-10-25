@@ -1,3 +1,6 @@
+## 1.1.3
+- Fixed a bug where watch command wouldn't write anything if dest directory didn't already exist
+
 ## 1.1.2
 - Updated findup-sync dependency to ^2.0.0
 
