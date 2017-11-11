@@ -3,7 +3,7 @@ var PostCSS = require('broccoli-postcss');
 var Funnel = require('broccoli-funnel');
 var MergeTrees = require('broccoli-merge-trees');
 
-var css = new Sass(['scss'], 'site.scss', 'css/site.css');
+var css = new Sass(['src/scss'], 'site.scss', 'css/site.css');
 
 css = new PostCSS(css, {
   plugins: [
@@ -14,7 +14,10 @@ css = new PostCSS(css, {
   ]
 });
 
-var img = new Funnel('img', { destDir: 'img' });
-var html = new Funnel('html');
+var img = new Funnel('src/img', { destDir: 'img' });
 
-module.exports = new MergeTrees([css, img, html]);
+var static = new Funnel('src', {
+  exclude: ['img', 'scss']
+});
+
+module.exports = new MergeTrees([css, img, static]);

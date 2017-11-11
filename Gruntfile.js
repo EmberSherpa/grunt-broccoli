@@ -1,14 +1,10 @@
 module.exports = function(grunt) {
-  grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
   grunt.loadNpmTasks('grunt-eslint');
   grunt.loadTasks('tasks');
-  grunt.registerTask('test', ['eslint', 'clean', 'nodeunit']);
+  grunt.registerTask('test', ['eslint', 'nodeunit']);
 
   grunt.initConfig({
-    clean: {
-      tests: ['test/build']
-    },
     eslint: {
       target: ['*.js', 'tasks/*.js', 'test/*.js']
     },

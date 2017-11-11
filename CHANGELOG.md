@@ -1,3 +1,6 @@
+## UNRELEASED
+- Updated test suite to also test watch task
+
 ## 1.1.3
 - Fixed a bug where watch command wouldn't write anything if dest directory didn't already exist
 
