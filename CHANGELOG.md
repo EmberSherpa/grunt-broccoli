@@ -1,4 +1,4 @@
-## UNRELEASED
+## 1.1.4
 - When using `options.incrementalOverwrite`, always overwrite target files on first successful build
 - Updated devDependencies to use `broccoli-sass-source-maps` and `sass` rather than the practically abandoned `broccoli-sass` package
 - Updated test suite to also test watch task
