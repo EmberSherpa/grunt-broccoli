@@ -125,6 +125,7 @@ module.exports = function(grunt) {
 
     // From here on out, we can assume that command is either "watch" or "serve"
     var watcher = new broccoli.Watcher(builder);
+    var hasBuiltOnce = false;
     var changedItems = [];
 
     function cleanupAndExit() {
@@ -176,7 +177,7 @@ module.exports = function(grunt) {
             destMtime = Number.NEGATIVE_INFINITY;
           }
 
-          if (srcMtime > destMtime) {
+          if (srcMtime > destMtime || !hasBuiltOnce) {
             changedItems.push(item);
             rimraf.sync(itemDestPath);
             mkdirp.sync(path.dirname(itemDestPath));
@@ -206,6 +207,8 @@ module.exports = function(grunt) {
 
         grunt.log.ok('Built - ' + buildTime + ' ms @ ' + new Date().toString());
       }
+
+      hasBuiltOnce = true;
     });
 
     watcher.on('buildFailure', function(error) {
