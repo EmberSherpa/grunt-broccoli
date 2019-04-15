@@ -1,4 +1,5 @@
 ## UNRELEASED
+- Updated devDependencies to use `broccoli-sass-source-maps` and `sass` rather than the practically abandoned `broccoli-sass` package
 - Updated test suite to also test watch task
 
 ## 1.1.3

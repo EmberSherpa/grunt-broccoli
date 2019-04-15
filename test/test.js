@@ -33,7 +33,7 @@ function assertBuildDir(buildDir, test, cssFilename, callback) {
     }
   );
 
-  test.equal(builtCSS, fixtureCSS);
+  test.equal(builtCSS.trim(), fixtureCSS.trim());
   callback();
 }
 

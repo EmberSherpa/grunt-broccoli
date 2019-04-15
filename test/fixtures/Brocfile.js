@@ -1,4 +1,4 @@
-var Sass = require('broccoli-sass');
+var Sass = require('broccoli-sass-source-maps')(require('sass'));
 var PostCSS = require('broccoli-postcss');
 var Funnel = require('broccoli-funnel');
 var MergeTrees = require('broccoli-merge-trees');

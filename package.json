@@ -35,11 +35,12 @@
     "broccoli-funnel": "^2.0.1",
     "broccoli-merge-trees": "^2.0.0",
     "broccoli-postcss": "^3.5.0",
-    "broccoli-sass": "^0.7.0",
+    "broccoli-sass-source-maps": "^4.0.0",
     "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
     "grunt-contrib-nodeunit": "^1.0.0",
-    "grunt-eslint": "^20.1.0"
+    "grunt-eslint": "^20.1.0",
+    "sass": "^1.18.0"
   },
   "eslintConfig": {
     "env": {

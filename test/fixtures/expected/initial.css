@@ -1,6 +1,8 @@
 body {
   background-color: green;
   display: -ms-flexbox;
-  display: flex; }
-  body.is-yellow {
-    background-color: yellow; }
+  display: flex;
+}
+body.is-yellow {
+  background-color: yellow;
+}
